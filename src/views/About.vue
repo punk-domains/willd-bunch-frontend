@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <h1 class="text-center">About TEMPLATE Domains</h1>
+  <h1 class="text-center">About .wildbunch Domains</h1>
   
   <div class="row mt-3">
     <div class="col-md-8 offset-md-2">

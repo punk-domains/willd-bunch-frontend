@@ -115,14 +115,14 @@ export default {
 .btn-sidebar, .btn-sidebar:focus {
   padding: 10px;
   width: 100%;
-  color: #DBDFEA;
+  color: #000;
   text-decoration: none;
   box-shadow: none;
 }
 
 .btn-sidebar:hover {
-  color: #DBDFEA;
-  border-color: #DBDFEA;
+  color: #000;
+  border-color: #000;
   border-radius: 10px;
 }
 
@@ -137,7 +137,7 @@ export default {
   content: "";
   display: block;
   padding-top: 100%;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 10px;
 }
 
@@ -159,7 +159,7 @@ export default {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  color: white
+  color: black
 }
 
 .flip-enter-active {

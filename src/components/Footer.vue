@@ -19,7 +19,7 @@
 
     <a class="icons" target="_blank" href="https://discord.gg/"><i class="bi bi-discord"></i></a>
 
-    <a class="icons" target="_blank" href="https://twitter.com/PunkDomains"><i class="bi bi-twitter"></i></a>
+    <a class="icons" target="_blank" href="https://twitter.com/TheWildBunchNFT"><i class="bi bi-twitter"></i></a>
     
   </div>
 </template>

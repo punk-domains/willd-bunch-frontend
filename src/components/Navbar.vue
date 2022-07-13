@@ -1,9 +1,9 @@
 <template>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand">
         <!--<img src="../assets/logo.png" alt="" width="30" class="d-inline-block align-bottom navbar-img">-->
-        TEMPLATE Domains
+        The Wild Bunch Domains
       </router-link>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,9 +13,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         
         <div class="d-flex ms-auto">
-          <div v-if="isActivated" class="">
+
+          <div v-if="isActivated" class="navbar-menu-buttons">
+            <div class="btn-group mx-2 navbar-menu-btn navbar-other-item">
+              <a class="btn btn-primary" target="_blank" href="https://opensea.io/collection/the-wild-bunch-nft">Get TWB NFT</a>
+            </div>
           
-            <div class="btn-group mx-2">
+            <div class="btn-group mx-2 navbar-menu-btn">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 {{getNetworkName}}
               </button>
@@ -30,7 +34,7 @@
               </ul>
             </div>
 
-            <div class="btn-group mx-2">
+            <div class="btn-group mx-2 navbar-menu-btn">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ getNameOrAddress }}
               </button>
@@ -116,22 +120,24 @@ export default {
   cursor: pointer;
 }
 .navbar-brand {
-  font-family: 'Impact', cursive;
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
 }
-.navbar-dark .navbar-brand {
-  color: #DBDFEA;
+.navbar-light .navbar-brand {
+  color: #1c1b1b;
 }
-.navbar-dark {
+.navbar-light {
   /*background: linear-gradient(90deg, hsla(265, 75%, 26%, 1) 0%, hsla(365, 75%, 26%, 1) 100%);*/
-  background: linear-gradient(90deg, hsla(250, 74%, 45%, 1) 0%, hsla(267, 56%, 50%, 1) 100%);
+  /*background: linear-gradient(90deg, hsla(250, 74%, 45%, 1) 0%, hsla(267, 56%, 50%, 1) 100%);*/
   /*background: linear-gradient(90deg, #3b1eca 0%, #793ac7 100%);*/
   border-radius: 0px 0px 10px 10px;
+  background: #fff;
   padding: 20px;
   
 }
 .navbar-img {
   margin-right: 5px;
 }
+
 @media only screen and (max-width: 767px) {
   .navbar-menu-btn {
     margin-bottom: 5px;

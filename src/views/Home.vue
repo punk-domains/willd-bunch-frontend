@@ -1,9 +1,10 @@
 <template>
-  <div class="container text-center home-gradient ">
-    <div class="text-align-header">
+  <div class="container text-center">
+    <img class="img-fluid main-img rounded" src="../assets/wildbunch-logo.jpeg" />
+
+    <div class="text-align-header mt-3">
       <h1>Mint your {{getTldName}} domain!</h1>
     </div>
-
 
     <div class="d-flex justify-content-center domain-input-container mb-3 mt-5">
       <div class="input-group domain-input input-group-lg input-sizing">
@@ -11,11 +12,11 @@
           v-model="chosenDomainName" 
           placeholder="enter domain name"
           type="text" 
-          class="form-control text-end"
+          class="form-control text-end border-2 border-end-0 border-dark"
           aria-label="Text input with dropdown button"
         >
 
-        <span class="input-group-text tld-addon">
+        <span class="input-group-text tld-addon border-2 border-dark">
           <span v-if="loading" class="spinner-border spinner-border-sm mx-1" role="status" aria-hidden="true"></span>
           <span style="color:#1B0D23;">{{getTldName}}</span>
         </span>
@@ -45,7 +46,7 @@
       class="btn btn-primary btn-lg mt-3 buy-button" 
       :disabled="waiting || buyNotValid(chosenDomainName).invalid || !hasUserEnoughTokens"
     >
-      <span>Not eligible</span>
+      <span>Not TWB NFT holder</span>
     </button>
 
     <!-- Too low ETH balance -->
@@ -252,12 +253,12 @@ export default {
 }
 
 .buy-button {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .container {
   padding-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 .domain-input {
@@ -270,6 +271,10 @@ export default {
 
 .error {
   color: #DBDFEA;
+}
+
+.main-img {
+  width: 10em;
 }
 
 .tld-addon {
