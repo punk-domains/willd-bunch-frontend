@@ -1,4 +1,3 @@
-import { ethers } from 'ethers';
 import { useEthers } from 'vue-dapp';
 import tokens from "../../abi/tokens.json";
 
@@ -11,13 +10,14 @@ export default {
     networkCurrency: "ETH",
     networkName: "Unsupported Network",
     supportedNetworks: {
-      42161: "Arbitrum"
+      421611: "Arbitrum Testnet",
+      1: "Ethereum"
     }
   }),
 
   getters: { 
     getBlockExplorerBaseUrl() {
-      return "https://arbiscan.io";
+      return "https://etherscan.io";
     },
     
     getChainId() {
@@ -67,7 +67,7 @@ export default {
 
   mutations: { 
     setNetworkData(state) {
-      state.networkName = "Arbitrum";
+      state.networkName = "Arbitrum Testnet";
       state.networkCurrency = "ETH";
     }
   },

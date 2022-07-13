@@ -35,6 +35,7 @@
     ".smol": "0xE0d972817e94c5FF9BDc49a63d8927A0bA833E4f"
   },
   "421611": {
-    ".arbitest": "0xC6a628b1FF1aD4e304bEeACAff915559786deA2e"
+    ".arbitest": "0xC6a628b1FF1aD4e304bEeACAff915559786deA2e",
+    ".twbtest": "0xEEAEED736cc6A6e68CC2F62be19Cf7E06ad9E94A"
   }
 }

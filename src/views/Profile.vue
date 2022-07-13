@@ -31,7 +31,7 @@
         <div class="col-md-6 mb-3">
           <div class="container text-center">
             <h3>Balance</h3>
-            <p class="text-break">{{ getPaymentTokenBalance }} {{this.getPaymentTokenName}}</p>
+            <p class="text-break">{{ getUserBalance }} {{this.getPaymentTokenName}}</p>
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default {
 
   computed: {
     ...mapGetters("tld", ["getTldAddress", "getTldName"]),
-    ...mapGetters("user", ["getUserAddress", "getPaymentTokenName", "getUserSelectedNameData", "getUserAllDomainNames", "getPaymentTokenAddress", "getPaymentTokenAllowance", "getPaymentTokenBalance", "getPaymentTokenContract"]),
+    ...mapGetters("user", ["getUserAddress", "getPaymentTokenName", "getUserSelectedNameData", "getUserAllDomainNames", "getPaymentTokenAddress", "getPaymentTokenAllowance", "getUserBalance", "getPaymentTokenContract"]),
 
     customData() {
       if (this.getUserSelectedNameData) {

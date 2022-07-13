@@ -3,7 +3,9 @@ import { ethers } from 'ethers';
 export default function useChainHelpers() {
 
   function getChainName(chainId) {
-    if (chainId === 137) {
+    if (chainId === 1) {
+      return "Ethereum";
+    } else if (chainId === 137) {
       return "Polygon";
     } else if (chainId === 10) {
       return "Optimism";
@@ -33,7 +35,12 @@ export default function useChainHelpers() {
   function getFallbackProvider(networkId) {
     let urls;
 
-      if (networkId === 137) {
+      if (networkId === 1) {
+        // Ethereum
+        urls = [
+          "https://eth-mainnet.g.alchemy.com/v2/" + import.meta.env.VITE_ALCHEMY_ETHEREUM_KEY
+        ];
+      } else if (networkId === 137) {
         // Polygon PoS Chain
         urls = [
           "https://polygon-rpc.com/" 
@@ -60,9 +67,14 @@ export default function useChainHelpers() {
         // Arbitrum
         urls = [
           "https://arb1.arbitrum.io/rpc",
-          "https://arb-mainnet.g.alchemy.com/v2/" + import.meta.env.VITE_ALCHEMY_ARBITRUM_KEY
+          //"https://arb-mainnet.g.alchemy.com/v2/" + import.meta.env.VITE_ALCHEMY_ARBITRUM_KEY
         ];
-      } 
+      } else if (networkId === 421611) {
+        // Arbitrum testnet
+        urls = [
+          "https://rinkeby.arbitrum.io/rpc"
+        ];
+      }
 
       if (urls) {
         const providers = urls.map(url => new ethers.providers.JsonRpcProvider(url));
@@ -76,7 +88,10 @@ export default function useChainHelpers() {
     let method;
     let params;
 
-    if (networkName == "Ropsten") {
+    if (networkName == "Ethereum") {
+      method = "wallet_switchEthereumChain"
+      params = [{ chainId: "0x1" }] 
+    } else if (networkName == "Ropsten") {
       method = "wallet_switchEthereumChain"
       params = [{ chainId: "0x3" }] 
     } else if (networkName == "Rinkeby") {

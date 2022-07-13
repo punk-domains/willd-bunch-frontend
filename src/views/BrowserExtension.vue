@@ -13,7 +13,7 @@
             <h3>Browser Extension/Plugin</h3>
 
             <p class="text-wrap p-4">
-              Punk Domains browser extension allows you to enter a punk domain name in the URL bar and the 
+              Punk Domains browser extension allows you to enter a Punk domain name in the URL bar and the 
               extension will redirect you to the URL that is set for that domain. If no URL is set, the extension 
               will redirect you to the domain page on the Punk Domains website.
             </p>
@@ -47,10 +47,16 @@
             <h3>Firefox</h3>
 
             <p>
-              <small><em>Coming soon!</em></small>
+              <small><em>
+                <a target="_blank" href="https://addons.mozilla.org/en-GB/firefox/addon/punk-domains/">
+                  Download
+                </a>
+              </em></small>
             </p>
 
-            <img class="img-fluid browser-img mb-3" src="../assets/firefox-logo.png" />
+            <a target="_blank" href="https://addons.mozilla.org/en-GB/firefox/addon/punk-domains/">
+              <img class="img-fluid browser-img mb-3" src="../assets/firefox-logo.png" />
+            </a>
           </div>
         </div>
 

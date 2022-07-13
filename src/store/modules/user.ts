@@ -1,10 +1,7 @@
 import { ethers } from 'ethers';
 import { useEthers, displayEther, shortenAddress } from 'vue-dapp';
-import erc20Abi from '../../abi/Erc20.json';
-import MinterAbi from "../../abi/Minter.json";
-import useChainHelpers from "../../hooks/useChainHelpers";
+import erc721Abi from '../../abi/Erc721.json';
 
-const { getFallbackProvider } = useChainHelpers();
 const { address, balance, chainId, signer } = useEthers();
 
 export default {
@@ -13,16 +10,17 @@ export default {
   state: () => ({ 
     canUserBuy: false,
     discountEligible: false,
+    nftAddress: "0x7A84e7f48DCe4ab212c3511eC5ade0982eaBa8c4",
     selectedName: null, // domain name that appears as the main profile name
     selectedNameData: null,
     selectedNameImageSvg: null,
     selectedNameKey: null,
-    tokenAddress: "0x539bdE0d7Dbd336b79148AA742883198BBF60342",
+    tokenAddress: "0xD1d656845AD2a15934C314e46977554FFe85383E",
     tokenContract: null,
     tokenAllowance: 0, // user's allowance for wrapper contract
     tokenBalance: 0, // user's balance
-    tokenName: "MAGIC",
-    tokenDecimals: 18,
+    tokenName: "ETH",
+    tokenDecimals: 4,
     userAddress: null,
     userAllDomainNames: [], // all domain names of current user (default + manually added)
     userDomainNamesKey: null,
@@ -235,19 +233,17 @@ export default {
       }
     },
 
-    async fetchCanUserBuy({ commit, rootGetters }) {
+    async fetchCanUserBuy({ commit, state }) {
       if (address.value) {
         // fetch if user can buy a domain
-        const intfc = new ethers.utils.Interface(MinterAbi);
-        const contract = new ethers.Contract(rootGetters["tld/getMinterAddress"], intfc, signer.value);
+        const intfc = new ethers.utils.Interface(erc721Abi);
+        const contract = new ethers.Contract(state.nftAddress, intfc, signer.value);
 
-        const canBuy = await contract.canUserMint(address.value);
-        const canGetDiscount = await contract.canGetDiscount(address.value);
+        const balance = await contract.balanceOf(address.value);
 
-        // TODO!!!
-        commit("setCanUserBuy", canBuy);
-        commit("setCanGetDiscount", canGetDiscount);
-        //commit("setCanUserBuy", true); // TODO: comment out this line and uncomment the line above
+        if (Number(balance) > 0) {
+          commit("setCanUserBuy", true);
+        }
       }
     },
 
@@ -317,29 +313,6 @@ export default {
         }
       }
       
-    },
-
-    async fetchUserPaymentTokenData({commit, state, rootGetters}) {
-        const fProvider = getFallbackProvider(rootGetters["tld/getTldChainId"]);
-  
-        const tokenIntfc = new ethers.utils.Interface(erc20Abi);
-        const contract = new ethers.Contract(state.tokenAddress, tokenIntfc, fProvider);
-
-        commit('setPaymentTokenContract', contract);
-  
-        if (address.value) {
-          // check allowance for the wrapper contract
-          const allowanceWei = await contract.allowance(address.value, rootGetters["tld/getMinterAddress"]);
-          const allowance = ethers.utils.formatUnits(allowanceWei, state.tokenDecimals);
-
-          commit('setPaymentTokenAllowance', allowance);
-    
-          // check user's token balance
-          const balanceWei = await contract.balanceOf(address.value);
-          const balance = ethers.utils.formatUnits(balanceWei, state.tokenDecimals);
-
-          commit('setPaymentTokenBalance', balance);
-        }  
     },
 
     async removeDomainFromUserDomains({commit, state}, domainName) {

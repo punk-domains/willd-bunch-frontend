@@ -10,11 +10,12 @@ export default {
   
   state: () => ({ 
     discountPercentage: 0,
-    tldName: ".smol",
-    tldAddress: "0xE0d972817e94c5FF9BDc49a63d8927A0bA833E4f",
+    tldName: ".twbtest",
+    tldAddress: "0xEEAEED736cc6A6e68CC2F62be19Cf7E06ad9E94A", // TODO
     tldContract: null,
-    tldChainId: 42161,
-    minterAddress: "0x08114885E510e33995F40f00735FA532a7391024",
+    tldChainId: 421611,
+    tldChainName: "Arbitrum Testnet",
+    minterAddress: "0x6b5E4D2Bc94F356B3557AaEc35422d21FdcA66c9", // TODO
     minterContract: null,
     minterPaused: true,
     minterTldPrice: null
@@ -32,6 +33,9 @@ export default {
     },
     getTldChainId(state) {
       return state.tldChainId;
+    },
+    getTldChainName(state) {
+      return state.tldChainName;
     },
     getTldName(state) {
       return state.tldName;
@@ -52,7 +56,7 @@ export default {
 
   mutations: {
     setTldContract(state) {
-      let fProvider = getFallbackProvider(state.tldChainId); // Polygon
+      let fProvider = getFallbackProvider(state.tldChainId);
 
       const tldIntfc = new ethers.utils.Interface(tldAbi);
       state.tldContract = new ethers.Contract(state.tldAddress, tldIntfc, fProvider);
@@ -76,30 +80,26 @@ export default {
   },
 
   actions: {
-    async fetchMinterContractData({commit, state, rootGetters}) {
+    async fetchMinterContractData({commit, state}) {
       let fProvider = getFallbackProvider(state.tldChainId);
 
-      // Minter contract
+      // TLD contract
       const minterIntfc = new ethers.utils.Interface(MinterAbi);
-      const contract = new ethers.Contract(state.minterAddress, minterIntfc, fProvider);
+      const minterContract = new ethers.Contract(state.minterAddress, minterIntfc, fProvider);
 
-      commit("setMinterContract", contract);
-
-      // check if minter contract is paused
-      const paused = await contract.paused();
+      // check if TLD contract is paused
+      const paused = await minterContract.paused();
       commit("setMinterPaused", paused);
+
+      // TLD contract
+      const tldIntfc = new ethers.utils.Interface(tldAbi);
+      const contract = new ethers.Contract(state.tldAddress, tldIntfc, fProvider);
 
       // get price
       const priceWei = await contract.price();
-      const domainPrice = ethers.utils.formatUnits(priceWei, rootGetters["user/getPaymentTokenDecimals"]);
+      const domainPrice = ethers.utils.formatEther(priceWei);
       commit("setMinterTldPrice", domainPrice);
 
-      // get discount
-      const discountBps = await contract.discountBps();
-      const discountPercentage = Number(discountBps) / 100; // %
-      commit("setDiscountPercentage", discountPercentage);
-      
-      //this.chosenAllowance = this.domainPrice;
     }
   }
 };

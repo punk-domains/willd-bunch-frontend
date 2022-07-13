@@ -47,18 +47,12 @@ export default {
   },
 
   methods: {
-    ...mapActions("user", ["fetchUserDomainNames", "fetchUserPaymentTokenData"]),
+    ...mapActions("user", ["fetchUserDomainNames", "fetchCanUserBuy"]),
     ...mapActions("tld", ["fetchMinterContractData"]),
 
     ...mapMutations("user", ["setUserData"]),
     ...mapMutations("network", ["setNetworkData"]),
     ...mapMutations("tld", ["setTldContract"]),
-
-    fetchAllData() {
-      this.setUserData();
-      this.fetchUserPaymentTokenData();
-      this.setNetworkData();
-    },
 
     async fetchReferrer() {
       // check if any referral is present: ?ref=...
@@ -114,7 +108,6 @@ export default {
     address(newVal, oldVal) {
       if (newVal) {
         this.setUserData();
-        this.fetchUserPaymentTokenData();
         this.fetchUserDomainNames(true);
       }
     },
@@ -125,7 +118,8 @@ export default {
       }
 
       if (this.chainId >= 1) {
-        this.fetchAllData();
+        this.setUserData();
+        this.setNetworkData();
         this.fetchUserDomainNames(true);
       }
     },

@@ -1,6 +1,6 @@
-# Punk frontend template
+# Wild Bunch domain frontend
 
-A template repository for all partner DAO frontends.
+Frontend for the Wild Bunch domain service (.wildbunch) powered by the [Punk Domains protocol](https://punk.domains).
 
 ## Quickstart
 
@@ -14,20 +14,10 @@ npm run dev
 Create a .env file and enter the following in it:
 
 ```bash
-VITE_ALCHEMY_ARBITRUM_KEY=key-from-alchemy
+VITE_ALCHEMY_ETHEREUM_KEY=key-from-alchemy
 ```
 
-If you use another chain (not Arbitrum), change the key name accordingly.
-
-If you don't create the .env file with that variable, the web app will not properly function on your localhost. The variable is also needed in the production environment.
-
-## .github/workflows/main.yml
-
-Make sure to add the correct Alchemy key (also add it in the repository env vars section)!
-
-## MinterAbi
-
-Replace the Minter ABI with the correct one for the project.
+If you don't create the .env file with that variable, the web app will not properly function on your localhost. The variable is also needed in the production environment (name it `ALCHEMY_ETHEREUM_KEY` there).
 
 ## tokens.json
 
