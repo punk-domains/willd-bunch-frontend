@@ -2,7 +2,7 @@
   <nav class="navbar sticky-top navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand">
-        <!--<img src="../assets/logo.png" alt="" width="30" class="d-inline-block align-bottom navbar-img">-->
+        <img src="../assets/wildbunch-logo.jpeg" alt="" width="30" class="d-inline-block align-bottom navbar-img">
         The Wild Bunch Domains
       </router-link>
 
