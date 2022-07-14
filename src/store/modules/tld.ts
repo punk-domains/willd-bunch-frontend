@@ -10,12 +10,12 @@ export default {
   
   state: () => ({ 
     discountPercentage: 0,
-    tldName: ".twbtest",
-    tldAddress: "0xEEAEED736cc6A6e68CC2F62be19Cf7E06ad9E94A", // TODO
+    tldName: ".wildbunch",
+    tldAddress: "0xaa9E5Ade68C9C3Ea967Dc5dde731fd1f797152Cb", // TODO
     tldContract: null,
-    tldChainId: 421611,
-    tldChainName: "Arbitrum Testnet",
-    minterAddress: "0x6b5E4D2Bc94F356B3557AaEc35422d21FdcA66c9", // TODO
+    tldChainId: 1,
+    tldChainName: "Ethereum",
+    minterAddress: "0xA8221890768603210c1a32d88374111084E46E6d", // TODO
     minterContract: null,
     minterPaused: true,
     minterTldPrice: null

@@ -10,7 +10,6 @@ export default {
     networkCurrency: "ETH",
     networkName: "Unsupported Network",
     supportedNetworks: {
-      421611: "Arbitrum Testnet",
       1: "Ethereum"
     }
   }),
@@ -67,7 +66,7 @@ export default {
 
   mutations: { 
     setNetworkData(state) {
-      state.networkName = "Arbitrum Testnet";
+      state.networkName = "Ethereum";
       state.networkCurrency = "ETH";
     }
   },

@@ -15,9 +15,9 @@
 
     <a class="icons" href="http://docs.punk.domains" target="_blank"><i class="bi bi-journal-text"></i></a>
 
-    <a class="icons" target="_blank" href="https://github.com/punk-domains"><i class="bi bi-github"></i></a>
+    <a class="icons" target="_blank" href="https://github.com/punk-domains/wild-bunch-frontend"><i class="bi bi-github"></i></a>
 
-    <a class="icons" target="_blank" href="https://discord.gg/"><i class="bi bi-discord"></i></a>
+    <a class="icons" target="_blank" href="https://discord.gg/thewildbunch"><i class="bi bi-discord"></i></a>
 
     <a class="icons" target="_blank" href="https://twitter.com/TheWildBunchNFT"><i class="bi bi-twitter"></i></a>
     

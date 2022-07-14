@@ -10,12 +10,12 @@ export default {
   state: () => ({ 
     canUserBuy: false,
     discountEligible: false,
-    nftAddress: "0x7A84e7f48DCe4ab212c3511eC5ade0982eaBa8c4",
+    nftAddress: "0xe9A1a323b4c8FD5Ce6842edaa0cd8af943cBdf22",
     selectedName: null, // domain name that appears as the main profile name
     selectedNameData: null,
     selectedNameImageSvg: null,
     selectedNameKey: null,
-    tokenAddress: "0xD1d656845AD2a15934C314e46977554FFe85383E",
+    tokenAddress: "",
     tokenContract: null,
     tokenAllowance: 0, // user's allowance for wrapper contract
     tokenBalance: 0, // user's balance
