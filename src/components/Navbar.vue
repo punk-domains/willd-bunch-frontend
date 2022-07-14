@@ -130,7 +130,7 @@ export default {
   /*background: linear-gradient(90deg, hsla(250, 74%, 45%, 1) 0%, hsla(267, 56%, 50%, 1) 100%);*/
   /*background: linear-gradient(90deg, #3b1eca 0%, #793ac7 100%);*/
   border-radius: 0px 0px 10px 10px;
-  background: #fff;
+  background: #f6f6f6;
   padding: 20px;
   
 }
