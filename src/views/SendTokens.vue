@@ -18,7 +18,7 @@
               <div class="col-md-6 offset-md-3">
                 <input 
                   v-model="receiver"
-                  class="form-control text-center"
+                  class="form-control text-center border-2 border-dark"
                   placeholder="Enter the receiver's domain name"
                 >
               </div>
@@ -30,7 +30,7 @@
                 <div class="input-group">
                   <input 
                     type="text" 
-                    class="form-control text-end"
+                    class="form-control text-end border-2 border-end-0 border-dark"
                     v-model="tokenAmount"
                     placeholder="0.0" 
                   />

@@ -10,10 +10,10 @@
       <h3>Useful links</h3>
 
       <ul>
-        <li><a target="_blank" href="#">Docs</a></li>
-        <li><a target="_blank" href="#">Github</a></li>
-        <li><a target="_blank" href="#">Discord</a></li>
-        <li><a target="_blank" href="#">Twitter</a></li>
+        <li><a target="_blank" href="https://docs.punk.domains">Docs</a></li>
+        <li><a target="_blank" href="https://github.com/thewildbunchio">Github</a></li>
+        <li><a target="_blank" href="https://discord.gg/thewildbunch">Discord</a></li>
+        <li><a target="_blank" href="https://twitter.com/TheWildBunchNFT">Twitter</a></li>
       </ul>
 
     </div>

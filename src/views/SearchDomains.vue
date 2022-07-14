@@ -16,7 +16,7 @@
               <div class="col-md-6 offset-md-3">
                 <input 
                   v-model="query"
-                  class="form-control text-center"
+                  class="form-control text-center border-2 border-dark"
                   placeholder="Enter a domain name"
                   v-on:keyup.enter="findDomain"
                 >

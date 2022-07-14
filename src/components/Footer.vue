@@ -4,18 +4,16 @@
     
     <span v-if="isActivated && isNetworkSupported"> | </span>
 
-    <router-link to="/about">About</router-link>
-    
-    <span> | </span>
+    <!--<router-link to="/about">About</router-link><span> | </span>-->
 
     <a target="_blank" href="https://punk.domains">Powered by Punk Domains</a>
   </div>
 
   <div class="container-fluid text-center">
 
-    <a class="icons" href="http://docs.punk.domains" target="_blank"><i class="bi bi-journal-text"></i></a>
+    <a class="icons" href="https://docs.punk.domains" target="_blank"><i class="bi bi-journal-text"></i></a>
 
-    <a class="icons" target="_blank" href="https://github.com/punk-domains/wild-bunch-frontend"><i class="bi bi-github"></i></a>
+    <a class="icons" target="_blank" href="https://github.com/thewildbunchio"><i class="bi bi-github"></i></a>
 
     <a class="icons" target="_blank" href="https://discord.gg/thewildbunch"><i class="bi bi-discord"></i></a>
 
