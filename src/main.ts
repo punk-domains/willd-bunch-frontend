@@ -33,7 +33,7 @@ app.use(router)
 app.use(store)
 
 app.use(VueDapp, {
-  infuraId: "not-needed-but-should-not-be-empty-either", // non-empty string for WalletConnect
+  infuraId: import.meta.env.VITE_INFURA_ETHEREUM_KEY,
 })
 
 app.use(Toast, options);
