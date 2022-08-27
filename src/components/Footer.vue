@@ -34,7 +34,7 @@ export default {
 
   computed: {
     ...mapGetters("network", ["isNetworkSupported"]),
-    
+    ...mapGetters("user", ["isUserMinterAdmin", "isUserTldAdmin", "isUserRoyaltyFeeUpdater"]),
   },
 
   setup() {
