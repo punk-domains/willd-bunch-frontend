@@ -5,6 +5,8 @@
     <span v-if="isActivated && isNetworkSupported"> | </span>
 
     <!--<router-link to="/about">About</router-link><span> | </span>-->
+    <router-link v-if="isUserMinterAdmin || isUserRoyaltyFeeUpdater || isUserTldAdmin" to="/admin">Admin</router-link>
+    <span v-if="isUserMinterAdmin || isUserRoyaltyFeeUpdater || isUserTldAdmin"> | </span>
 
     <a target="_blank" href="https://opensea.io/collection/wildbunch-domains">.wildbunch on OpenSea</a><span> | </span>
     <a target="_blank" href="https://punk.domains">Powered by Punk Domains</a>

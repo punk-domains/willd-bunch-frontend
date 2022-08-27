@@ -1,6 +1,8 @@
 import { ethers } from 'ethers';
 import { useEthers, displayEther, shortenAddress } from 'vue-dapp';
 import erc721Abi from '../../abi/Erc721.json';
+import MinterAbi from "../../abi/Minter.json";
+import TldAbi from "../../abi/PunkTLD.json";
 
 const { address, balance, chainId, signer } = useEthers();
 
@@ -10,6 +12,9 @@ export default {
   state: () => ({ 
     canUserBuy: false,
     discountEligible: false,
+    isTldAdmin: false,
+    isMinterAdmin: false,
+    isRoyaltyFeeUpdater: false,
     nftAddress: "0xe9A1a323b4c8FD5Ce6842edaa0cd8af943cBdf22",
     selectedName: null, // domain name that appears as the main profile name
     selectedNameData: null,
@@ -77,6 +82,15 @@ export default {
     },
     getPaymentTokenDecimals(state) {
       return state.tokenDecimals;
+    },
+    isUserRoyaltyFeeUpdater(state) {
+      return state.isRoyaltyFeeUpdater;
+    },
+    isUserMinterAdmin(state) {
+      return state.isMinterAdmin;
+    },
+    isUserTldAdmin(state) {
+      return state.isTldAdmin;
     }
   },
 
@@ -128,6 +142,18 @@ export default {
       }
     },
 
+    setIsRoyaltyFeeUpdater(state, admin) {
+      state.isRoyaltyFeeUpdater = admin;
+    },
+
+    setIsMinterAdmin(state, admin) {
+      state.isMinterAdmin = admin;
+    },
+
+    setIsTldAdmin(state, admin) {
+      state.isTldAdmin = admin;
+    },
+
     setSelectedName(state, selectedName) {
       state.selectedName = selectedName;
       localStorage.setItem(state.selectedNameKey, state.selectedName);
@@ -168,6 +194,34 @@ export default {
   },
 
   actions: { 
+    async checkIfAdmin({ commit, rootGetters }) {
+      if (address.value) {
+        // check if user has any admin privileges
+        const minterIntfc = new ethers.utils.Interface(MinterAbi);
+        const minterContract = new ethers.Contract(rootGetters["tld/getMinterAddress"], minterIntfc, signer.value);
+
+        const minterAdmin = await minterContract.owner();
+
+        if (minterAdmin === address.value) {
+          commit("setIsMinterAdmin", true);
+        } else {
+          commit("setIsMinterAdmin", false);
+        }
+
+        // check if user has any admin privileges
+        const tldIntfc = new ethers.utils.Interface(TldAbi);
+        const tldContract = new ethers.Contract(rootGetters["tld/getTldAddress"], tldIntfc, signer.value);
+
+        const tldAdmin = await tldContract.owner();
+
+        if (tldAdmin === address.value) {
+          commit("setIsTldAdmin", true);
+        } else {
+          commit("setIsTldAdmin", false);
+        }
+      }
+    },
+
     async fetchUserDomainNames({ dispatch, commit, state, rootState, rootGetters }, newAccount) {
       let userDomainNames = [];
       let userDomainNamesKey = null;
