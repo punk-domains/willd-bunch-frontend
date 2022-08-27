@@ -31,6 +31,7 @@ export default {
     this.fetchReferrer();
     this.setTldContract();
     this.fetchMinterContractData();
+    this.checkIfAdmin();
 
     // reset localstorage
     const v2 = localStorage.getItem("punkv1");
@@ -47,7 +48,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("user", ["fetchUserDomainNames", "fetchCanUserBuy"]),
+    ...mapActions("user", ["checkIfAdmin", "fetchUserDomainNames", "fetchCanUserBuy"]),
     ...mapActions("tld", ["fetchMinterContractData"]),
 
     ...mapMutations("user", ["setUserData"]),
@@ -109,6 +110,7 @@ export default {
       if (newVal) {
         this.setUserData();
         this.fetchUserDomainNames(true);
+        this.checkIfAdmin();
       }
     },
 
@@ -121,6 +123,7 @@ export default {
         this.setUserData();
         this.setNetworkData();
         this.fetchUserDomainNames(true);
+        this.checkIfAdmin();
       }
     },
 
